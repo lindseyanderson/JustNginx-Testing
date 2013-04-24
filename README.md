@@ -26,7 +26,6 @@ Usage
 -------------------------
 
 	python <( curl 	-H "host: example.com" \
-		-H "x-http: apache" \
 		-H "x-port: 80" \
 		-H "x-docroot: /var/www/vhosts/example.com" \
 		justnginx.com )
