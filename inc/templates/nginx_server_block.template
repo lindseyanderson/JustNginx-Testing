@@ -4,8 +4,6 @@
 # Included separate server blocks for rewrite purposes if needed
 # as well as a basic SSL installation
 #
-# :32,37 s/^#//
-#
 # @author : Lindsey Anderson
 # @date   : 21/04/2013
 #
@@ -23,7 +21,8 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with JustCurl.  If not, see <http://www.gnu.org/licenses/>.
-
+#
+# @url : http://justcurl.com/
 
 server {
         listen ${port};
@@ -60,10 +59,17 @@ server {
 #        rewrite ^ http://${site_url}$request_uri? permanent;
 # }
 
+# When enabling an SSL certificate in Nginx, to provide a CA Chain
+# simply combine the certificate and CA chain through the following:
+# 
+# cat 2013-${site_url}.crt 2013-${site_url}.CA.crt > \
+# 	2013-${site_url}.chained.crt
+#
+
 #server {
 #       listen 443;
 #       ssl on;
-#       ssl_certificate /etc/pki/tls/certs/2013-${site_url}.crt;
+#       ssl_certificate /etc/pki/tls/certs/2013-${site_url}.chained.crt;
 #       ssl_certificate_key /etc/pki/tls/private/2013-${site_url}.key;
 #       keepalive_timeout 10;
 #       rewrite ^ http://${site_url}\$request_uri? permanent;

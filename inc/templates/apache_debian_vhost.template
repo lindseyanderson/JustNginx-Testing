@@ -1,3 +1,29 @@
+# @file   : apache_debian_vhost.template
+#
+# Template assumes you'll have a www and non-www subdomain.
+# Included separate server blocks for rewrite purposes if needed
+# as well as a basic SSL installation
+#
+# @author : Lindsey Anderson
+# @date   : 21/04/2013
+#
+# @license: apache_debian_vhost.template is a part of JustCurl
+#
+#    JustCurl is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    JustCurl is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with JustCurl.  If not, see <http://www.gnu.org/licenses/>.
+#
+# @url : http://justcurl.com/
+
 <VirtualHost *:${port}>
         ServerName ${site_url}
         ServerAlias www.${site_url}
