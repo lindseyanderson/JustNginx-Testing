@@ -1,9 +1,11 @@
 JustCurl - A virtual host / server_block creation script
 ================================
 
-[JustNginx](http://justnginx.com/) - currently exists as a combination of PHP and BASH and will be accepting this new version once completed.
+[JustNginx](http://justnginx.com/) - currently exists as a combination of PHP and BASH.  
 
-This is an automated script for both virtual host creation in either Nginx or Apache. Other features will be added as we go to eventually encompass the following:
+[JustCurl](http://justcurl.com/) - currently exists as a combination of PHP and BASH.  
+
+This is an automated script for both virtual host creation in either Nginx or Apache. They currently exist as two separate entities and will be combined into a more robust solution.  Other features will be added as we go to eventually encompass the following:
 
 Features
 -------------------------
@@ -15,9 +17,7 @@ Features
 To Do
 -------------------------
 * MySQL Database creation
- * _MySQL Installation available_
 * MongoDB Database creation
- * _MongoDB Installation_
 * Wordpress installation
 * Drupal installation
 
@@ -39,9 +39,25 @@ Defaults
 
 A host header must always be specified when attempting a virtual host installation.  The following are default values for the remaining headers:
 
-* x-http:    apache 
 * x-port:    80
-* x-docroot: /var/www/vhosts/%{domain_name}
+* x-docroot: /var/www/vhosts/%{domain_name}/htdocs
+
+
+License
+-------------------------
+
+This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 Contact
