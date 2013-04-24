@@ -24,7 +24,7 @@ Create the data we'll send to our clients by pulling in template data
 
 
 # Pull in our default template, update the contents as required
-$server_block	  = file_get_contents('inc/templates/nginx_server_block.template');
+$server_block	  = file_get_contents('inc/templates/nginx_php_base.template');
 # Check to see if file exists prior to creation
 $installer_script = file_get_contents('inc/bash/install_block.sh');
 
