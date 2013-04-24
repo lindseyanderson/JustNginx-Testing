@@ -1,0 +1,52 @@
+# @file   : nginx_server_block.template
+# Comes with oneserver block created, to add the www subdomain perform the
+# following from within VI:
+#
+# :32,37 s/^#//
+#
+# @author : Lindsey Anderson
+# @date   : 21/04/2013
+
+server {
+        listen ${port};
+        server_name ${site_url} www.${site_url};
+
+        root ${docroot};
+
+        location / {
+                index index.php;
+        }
+
+	# Note the php-fpm is set to a UNIX socket,
+	# please ensure your php-fpm is set to listen here
+        location ~ \.php$ {
+                try_files $uri =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME
+                $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+        access_log /var/log/nginx/${site_url}-access.log;
+}
+
+#server {
+#        listen 80;
+#
+#        server_name www.${site_url};
+#        rewrite ^ http://${site_url}$request_uri? permanent;
+# }
+
+#server {
+#       listen 443;
+#       ssl on;
+#       ssl_certificate /etc/pki/tls/certs/2013-${site_url}.crt;
+#       ssl_certificate_key /etc/pki/tls/private/2013-${site_url}.key;
+#       keepalive_timeout 10;
+#       rewrite ^ http://${site_url}\$request_uri? permanent;
+# }
