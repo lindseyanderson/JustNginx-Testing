@@ -29,7 +29,7 @@ foreach ($_SERVER as $name => $value)  {
 	if(substr($name, 0, 5) == 'HTTP_') {
 		# Check our headers
 		if(strtoupper($name) == "HTTP_HOST"){
-			$header_host = $value;
+			$header_host = strtolower($value);
 		}
 		if(strtoupper($name) == "HTTP_X_PORT"){
 			if(is_numeric($value)) {
@@ -39,12 +39,23 @@ foreach ($_SERVER as $name => $value)  {
 			}
 		}
 		if(strtoupper($name) == "HTTP_X_DOCROOT"){
-			$header_docroot = $value;
+			$header_docroot = strtolower($value);
 		} else {
 			$header_docroot = "/var/www/vhosts/$header_host/htdocs";
+		}
+		if(strtoupper($name) == "HTTP_X_WEBSERVICE"){
+			if(strtolower($value) == "nginx"){
+				$header_webservice = "nginx";
+			} else {
+				$header_webservice = "apache";
+			}
+		} else {
+			$header_webservice = "nginx";
 		}
 	}
 }
 # Create a new Virtual Host
-include('inc/server_block.php');
+if($header_webservice == "nginx") {
+	include('inc/server_block.php');
+}
 ?>
