@@ -1,6 +1,6 @@
 #!/bin/sh
-# @file  : mysql_create_database.sh
-# Create a MySQL database
+# @file  : mysql_create_user.sh
+# Create a MySQL user
 # @date  : 04/24/2013
 # @author: Lindsey Anderson
 # @license: mysql_create_database.sh is a part of JustCurl
@@ -18,8 +18,7 @@
 #    You should have received a copy of the GNU General Public License
 
 MYSQL=$(which mysql)
-DATABASE=${database_name}
-QUERY_STRING="CREATE DATABASE IF NOT EXISTS $DATABASE;"
+QUERY_STRING="CREATE USER ${mysql_user};"
 
-# issue the MySQL query
+# Execute the query
 $MYSQL -e $QUERY_STRING
