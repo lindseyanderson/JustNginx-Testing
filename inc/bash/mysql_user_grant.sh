@@ -1,9 +1,9 @@
 #!/bin/sh
-# @file  : mysql_create_user.sh
-# Create a MySQL user
+# @file  : mysql_grant_user.sh
+# Configure user grants
 # @date  : 04/24/2013
 # @author: Lindsey Anderson
-# @license: mysql_create_database.sh is a part of JustCurl
+# @license: mysql_grant_user.sh is a part of JustCurl
 #
 #    JustCurl is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -19,28 +19,9 @@
 
 MYSQL=$(which mysql)
 USERNAME=${mysql_user}
-PASSWORD=${mysql_passwd}
-HOST=${mysql_host}
-COUNT=0
+DATABASE=${mysql_db}
+DB_HOST=${mysql_db_host}
 
-CHECK_USER_QUERY=$(${MYSQL} -e "SELECT user, host FROM `mysql`.user WHERE \
-				user='${USERNAME}' LIMIT 1;")
+QUERY_STRING="GRANT ALL ON `${mysql_db}`.* TO '${USERNAME}'@'${DB_HOST}';"
 
-for line in $CHECK_USER_QUERY; do
-	LINE=$(echo -n $line | tr -d "\n")
-	if [ $COUNT -eq 0 ]; then
-		COUNT=$(( $COUNT + 1 ))
-		LINE=$(echo $LINE + " " | tr -d "\n")
-	else
-		LINE=$($LINE + "\n")
-		COUNT=0
-	fi
-done
-
-if [ ! ${USER_EXISTS} ]; then
-	QUERY_STRING="CREATE USER ${USERNAME}@${HOST} IDENTIFIED BY '${PASSWORD}';"
-else
-	QUERY_STRING="
-fi
-# Execute the query
 $MYSQL -e $QUERY_STRING
