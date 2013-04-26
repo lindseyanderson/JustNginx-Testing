@@ -40,7 +40,7 @@ done
 if [ ! ${USER_EXISTS} ]; then
 	QUERY_STRING="CREATE USER ${USERNAME}@${HOST} IDENTIFIED BY '${PASSWORD}';"
 else
-	QUERY_STRING="
+	exit 
 fi
 # Execute the query
 $MYSQL -e $QUERY_STRING
