@@ -50,6 +50,11 @@ server {
                 deny all;
         }
         access_log /var/log/nginx/${site_url}-access.log;
+
+	# Prevent 0day overflow
+	if ($http_transfer_encoding ~* chunked) {
+        	return 444;
+    	}
 }
 
 #server {
