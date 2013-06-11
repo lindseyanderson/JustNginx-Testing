@@ -14,6 +14,11 @@
  * @package WordPress
  */
 
+//Setup defines
+define('FS_CHMOD_DIR', 2775);
+define('FS_CHMOD_FILE', 0664);
+define('FS_METHOD', 'direct');
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', '${DB_NAME}');
