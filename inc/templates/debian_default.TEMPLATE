@@ -4,7 +4,7 @@
         #### This is where you put your files for that domain: ${docroot}
         DocumentRoot ${docroot}
 
-  # RewriteEngine On
+        # RewriteEngine On
 	# RewriteCond %{HTTP_HOST} ^${site_url}
 	# RewriteRule ^(.*)$ http://www.${site_url} [R=301,L]
 
