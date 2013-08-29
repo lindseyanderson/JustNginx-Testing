@@ -15,7 +15,7 @@
  */
 
 //Setup defines
-define('FS_CHMOD_DIR', 2775);
+define('FS_CHMOD_DIR', 02775);
 define('FS_CHMOD_FILE', 0664);
 define('FS_METHOD', 'direct');
 
